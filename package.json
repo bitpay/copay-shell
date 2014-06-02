@@ -1,0 +1,29 @@
+{
+  "name": "copay-shell",
+  "version": "0.0.1",
+  "description": "native application wrapper for copay using atom-shell",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gordonwritescode/copay-shell.git"
+  },
+  "keywords": [
+    "copay",
+    "bitcoin",
+    "bitcore",
+    "bitpay",
+    "multisig",
+    "wallet",
+    "multisignature"
+  ],
+  "author": "Gordon Hall <gordon@bitpay.com>",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/gordonwritescode/copay-shell/issues"
+  },
+  "homepage": "https://github.com/gordonwritescode/copay-shell",
+  "dependencies": {
+    "copay": "git+https://github.com/gordonwritescode/copay.git"
+  }
+}
