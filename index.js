@@ -50,7 +50,7 @@ app.on('ready', function() {
       mainWindow = null;
     });
 
-    mainWindow.toggleDevTools();
+    // mainWindow.toggleDevTools();
 
   });
 
