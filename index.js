@@ -34,6 +34,9 @@ app.on('ready', function() {
       require('./lib/app-menu')(app, mainWindow.webContents)
     );
 
+    // setup the message handler
+    require('./lib/message-handler')(mainWindow);
+
     // load our local copay server
     mainWindow.loadUrl(loc);
 
@@ -47,7 +50,7 @@ app.on('ready', function() {
       mainWindow = null;
     });
 
-    // mainWindow.toggleDevTools();
+    mainWindow.toggleDevTools();
 
   });
 
