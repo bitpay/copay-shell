@@ -37,13 +37,14 @@ app.on('ready', function() {
     // setup the message handler
     require('./lib/message-handler')(mainWindow);
 
+    // setup the native system tray integration
+    // require('./lib/system-tray')(app, mainWindow.webContents);
+
     // load our local copay server
     mainWindow.loadUrl(loc);
 
     // kind of hacky - but let's avoid the white "flash" before rendering
-    setTimeout(function() {
-      mainWindow.show()
-    }, 1000);
+    setTimeout(mainWindow.show.bind(mainWindow), 1000);
 
     // deref the browser window when we close it so it can be GC'ed
     mainWindow.on('closed', function() {
