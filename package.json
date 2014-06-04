@@ -25,5 +25,11 @@
   "homepage": "https://github.com/gordonwritescode/copay-shell",
   "dependencies": {
     "copay": "git+https://github.com/gordonwritescode/copay.git"
+  },
+  "devDependencies": {
+    "github-releases": "~0.2.0",
+    "unzip": "~0.1.9",
+    "async": "~0.9.0",
+    "cli-color": "~0.3.2"
   }
 }
