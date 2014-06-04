@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "native application wrapper for copay using atom-shell",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "node ./scripts/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/gordonwritescode/copay-shell.git"
@@ -28,7 +30,6 @@
   },
   "devDependencies": {
     "github-releases": "~0.2.0",
-    "unzip": "~0.1.9",
     "async": "~0.9.0",
     "cli-color": "~0.3.2"
   }

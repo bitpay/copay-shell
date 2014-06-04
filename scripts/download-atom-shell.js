@@ -5,18 +5,20 @@
 var path    = require('path');
 var fs      = require('fs');
 var GitHub  = require('github-releases');
-var unzip   = require('unzip');
 var async   = require('async');
 var readl   = require('readline');
 var color   = require('cli-color');
 var github  = new GitHub({ repo: 'atom/atom-shell' });
+var exec    = require('child_process').exec;
+var os      = require('os');
 
 var version = 'v0.12.7';
 var target  = path.normalize(__dirname + '/../build/');
 
-module.exports = function(options, callback) {
+module.exports = function(callback) {
 
-  console.log(color.blue('{copay}'), 'ensuring existence of output direcrtory');
+  console.log(color.blue('{copay}'), 'ensuring existence of output directory');
+
   ensureOutputTargets();
 
   console.log(color.blue('{copay}'), 'getting atom-shell release ' + version);
@@ -50,20 +52,32 @@ module.exports = function(options, callback) {
             return callback(err);
           }
 
+          var bytes = 0;
+
           inStream.on('data', function(chunk) {
             rl.write(null, { ctrl: true, name: 'u' });
-            rl.write('      bytes received: ' + chunk.length);
+            rl.write('      bytes received: ' + (bytes + chunk.length));
+            bytes += chunk.length;
           });
 
           inStream.on('end', function() {
             rl.close();
             console.log('');
-            console.log(color.blue('{copay}'), 'done!');
+            console.log(color.blue('{copay}'), 'downloaded!');
           });
 
-          var out = target + process.platform;
+          var out       = target + process.platform + '/Copay';
+          var tmp       = os.tmpDir() + '/atom-shell.zip';
+          var outStream = fs.createWriteStream(tmp);
 
-          inStream.pipe(unzip.Extract({ path: out }));
+          outStream.on('finish', function() {
+            console.log(color.blue('{copay}'), 'unzipping archive');
+            exec('unzip -o ' + tmp + ' -d ' + out, function(err, stdout, stderr) {
+              callback(err || stderr);
+            });
+          });
+
+          inStream.pipe(outStream);
 
         });
       }
@@ -76,5 +90,6 @@ function ensureOutputTargets() {
   if (!fs.existsSync(target)) fs.mkdirSync(target);
   if (!fs.existsSync(target + process.platform)) {
     fs.mkdirSync(target + process.platform);
+    fs.mkdirSync(target + process.platform + '/Copay');
   }
 };
