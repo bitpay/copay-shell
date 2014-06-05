@@ -12,8 +12,8 @@ var github  = new GitHub({ repo: 'atom/atom-shell' });
 var exec    = require('child_process').exec;
 var os      = require('os');
 
-var version = 'v0.12.7';
-var target  = path.normalize(__dirname + '/../build/');
+var version = 'v0.13.0';
+var target  = path.normalize(process.argv[2] || (__dirname + '/../build/'));
 
 module.exports = function(callback) {
 
@@ -93,3 +93,7 @@ function ensureOutputTargets() {
     fs.mkdirSync(target + process.platform + '/Copay');
   }
 };
+
+if (process.argv[2]) module.exports(function(err) {
+  console.log(err || 'atom-shell release downloaded!');
+});

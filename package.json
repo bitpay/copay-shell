@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gordonwritescode/copay-shell.git"
+    "url": "git://github.com/bitpay/copay-shell.git"
   },
   "keywords": [
     "copay",
@@ -22,11 +22,11 @@
   "author": "Gordon Hall <gordon@bitpay.com>",
   "license": "LGPLv3",
   "bugs": {
-    "url": "https://github.com/gordonwritescode/copay-shell/issues"
+    "url": "https://github.com/bitpay/copay-shell/issues"
   },
-  "homepage": "https://github.com/gordonwritescode/copay-shell",
+  "homepage": "https://github.com/bitpay/copay-shell",
   "dependencies": {
-    "copay": "git+https://github.com/gordonwritescode/copay.git"
+    "copay": "git+https://github.com/bitpay/copay.git"
   },
   "devDependencies": {
     "github-releases": "~0.2.0",

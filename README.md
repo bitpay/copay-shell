@@ -15,15 +15,6 @@ Clone the repository and install dependencies.
 ~# cd copay-shell && npm install
 ```
 
-After dependencies are installed, the Atom Shell binary for your platform will
-be fetched and placed in `copay-shell/bin`.
-
-To launch Copay Shell, issue the following command:
-
-```
-~# npm start
-```
-
 To build a distributable package for your platform, run:
 
 ```
